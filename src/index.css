@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-950 text-slate-200 antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-image: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 196, 167, 0.08), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(42, 47, 196, 0.1), transparent);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3349;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3d4560;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2d3349 transparent;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(24, 28, 43, 0.85), rgba(17, 20, 31, 0.92));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px currentColor;
+}
