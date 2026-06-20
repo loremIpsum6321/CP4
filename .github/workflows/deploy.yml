@@ -14,9 +14,9 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    # Step 2: Set up Node.js environment
+    # Step 2: Set up Node.js environment (Fixed Typo Here)
     - name: Set up Node.js
-      uses: actions/checkout@v4
+      uses: actions/setup-node@v4
       with:
         node-version: 20
 
@@ -33,6 +33,6 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/ # Vite outputs compiled code here
-        server-dir: ./public_html/cp4/ # CHANGE THIS to your exact cPanel target folder
-        dangerous-clean-slate: false # Set to true ONLY if you want to erase old files in that folder that aren't in this repo
+        local-dir: ./dist/ 
+        server-dir: ./public_html/dcp4/ 
+        dangerous-clean-slate: false
