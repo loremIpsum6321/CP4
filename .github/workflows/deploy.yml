@@ -34,5 +34,5 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
-        server-dir: ./public_html/dcp4/ 
+        server-dir: ./public_html/cp4/ 
         dangerous-clean-slate: false
