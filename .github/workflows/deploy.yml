@@ -26,7 +26,7 @@ jobs:
         npm ci
         npm run build
 
-    # Step 4: Upload the compiled files (Vite puts them in the 'dist' folder) to cPanel via FTP
+# Step 4: Upload the compiled files (Vite puts them in the 'dist' folder) to cPanel via FTP
     - name: Sync Files to cPanel
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
@@ -34,5 +34,5 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
-        server-dir: ./public_html/cp4/ 
+        server-dir: ./ 
         dangerous-clean-slate: false
