@@ -1,0 +1,38 @@
+name: Build and Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow every time you push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Pull the latest code from your repo
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/checkout@v4
+      with:
+        node-version: 20
+
+    # Step 3: Install dependencies and build the optimized production files
+    - name: Install Dependencies & Build React App
+      run: |
+        npm ci
+        npm run build
+
+    # Step 4: Upload the compiled files (Vite puts them in the 'dist' folder) to cPanel via FTP
+    - name: Sync Files to cPanel
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/ # Vite outputs compiled code here
+        server-dir: ./public_html/cp4/ # CHANGE THIS to your exact cPanel target folder
+        dangerous-clean-slate: false # Set to true ONLY if you want to erase old files in that folder that aren't in this repo
